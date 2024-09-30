@@ -21,7 +21,7 @@ body {
 #playPauseButton,
 #micButton,
 #fileUploadLabel {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     padding: 10px 20px;
     font-size: 16px;
@@ -33,7 +33,7 @@ body {
 }
 
 #playPauseButton {
-    left: 20px;
+    left: 11px;
     background-color: #1e90ff;
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 #fileUploadLabel {
-    left: 290px;
+    left: 285px;
     background-color: #6c757d;
     padding: 10px 20px;
 }
@@ -65,6 +65,7 @@ body {
 
 #control-panel {
     position: absolute;
+    opacity: 0.8;
     bottom: 20px;
     right: 20px;
     display: flex;
@@ -79,6 +80,7 @@ body {
     flex-direction: column-reverse;
     transform-origin: bottom;
     width: 300px;
+    font-family: '../../static/bebas-neue-v9-latin-regular.woff';
 }
 
 #control-panel.expanded {
@@ -90,7 +92,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 15px;
 }
 
 .control {
@@ -117,13 +119,14 @@ body {
     color: white;
     font-size: 14px;
     font-weight: bold;
+    font-family: '../../static/bebas-neue-v9-latin-regular.woff';
     text-align: center;
     user-select: none;
 }
 
 .control-content {
     display: flex;
-    padding: 10px;
+    padding: 0px;
     overflow: hidden;
 }
 
