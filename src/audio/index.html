@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Sounds</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <canvas id="canvas1"></canvas>
+        <audio id="audio1" src="cat.mp3"></audio>
+        <input type="file" id="fileupload" accept="audio/*" style="display: none;">
+        <label for="fileupload" id="fileUploadLabel">Upload Audio</label>
+        <button id="micButton">Start Microphone</button>
+        <button id="playPauseButton">Pause</button>
+
+        <div id="control-panel">
+            <div class="control-header">
+                <!-- Start Color Control -->
+                <div class="control" id="start-color-control">
+                    <div class="color-preview" id="start-color-preview"></div>
+                </div>
+
+                <!-- End Color Control -->
+                <div class="control" id="end-color-control">
+                    <div class="color-preview" id="end-color-preview"></div>
+                </div>
+
+                <!-- Blur Control -->
+                <div class="control" id="blur-control">
+                    <div class="color-preview">
+                        <span>Blur</span>
+                    </div>
+                </div>
+
+                <!-- Opacity Control -->
+                <div class="control" id="opacity-control">
+                    <div class="color-preview">
+                        <span>Opacity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-content">
+                <!-- Start Color Palette -->
+                <div class="content-item" id="start-color-content">
+                    <div class="palette" id="start-color-palette">
+                        <!-- JavaScript로 동적으로 생성될 영역 -->
+                    </div>
+                </div>
+
+                <!-- End Color Palette -->
+                <div class="content-item" id="end-color-content">
+                    <div class="palette" id="end-color-palette">
+                        <!-- JavaScript로 동적으로 생성될 영역 -->
+                    </div>
+                </div>
+
+                <!-- Blur Slider -->
+                <div class="content-item" id="blur-content">
+                    <input type="range" id="blur-slider" min="0" max="20" step="1" value="5">
+                </div>
+
+                <!-- Opacity Slider -->
+                <div class="content-item" id="opacity-content">
+                    <input type="range" id="opacity-slider" min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="../audio/index.html" class="nav-item" data-page="Y" id="tap-Y">
+        Y
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </a>
+        <a href="../grid/index.html" class="nav-item" data-page="E" id="tap-E">
+        E
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </a>
+        <span class="nav-item">
+        O
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </span>
+        <span class="nav-item">
+        N
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </span>
+        <span class="nav-item">
+        J
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </span>
+        <span class="nav-item">
+        A
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </span>
+        <span class="nav-item">
+        E
+            <div class="hover-bg"></div>
+            <span class="hover-text">CH</span>
+        </span>
+
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
