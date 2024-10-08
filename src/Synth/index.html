@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Synthesizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.32/Tone.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+</head>
+
+<body>
+    <div id="controls">
+        <label for="synthSelector">Select Synth:</label>
+        <select id="synthSelector">
+            <option value="PolySynth">PolySynth</option>
+            <option value="FMSynth">FMSynth</option>
+            <option value="AMSynth">AMSynth</option>
+            <option value="MonoSynth">MonoSynth</option>
+            <option value="PluckSynth">PluckSynth</option>
+            <option value="MembraneSynth">MembraneSynth</option>
+            <option value="NoiseSynth">NoiseSynth</option>
+        </select>
+
+
+        <label for="effectSelector">Select Effect:</label>
+        <select id="effectSelector">
+            <option value="None">None</option>
+            <option value="Reverb">Reverb</option>
+            <option value="Delay">Delay</option>
+            <option value="Chorus">Chorus</option>
+            <option value="Distortion">Distortion</option>
+        </select>
+
+        <div id="effectControls">
+            <label for="reverbDecay">Reverb Decay:</label>
+            <input type="range" id="reverbDecay" min="0" max="10" step="0.1" value="2">
+
+            <label for="delayTime">Delay Time (ms):</label>
+            <input type="range" id="delayTime" min="0" max="2000" step="1" value="500">
+
+            <label for="chorusDepth">Chorus Depth:</label>
+            <input type="range" id="chorusDepth" min="0" max="1" step="0.1" value="0.5">
+
+            <label for="distortion">Distortion:</label>
+            <input type="range" id="distortion" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        <label for="volumeControl">Volume:</label>
+        <input type="range" id="volumeControl" min="0" max="100" value="50">
+    </div>
+    <div id="container"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
