@@ -401,7 +401,7 @@ window.addEventListener('resize', function() {
 applySettings();
 
 // 활성 탭 추적 변수 선언 및 초기 활성 탭 설정
-let activeTab = document.getElementById('tap-Y');
+let activeTab = document.getElementById('tap-E');
 
 // 초기 활성 탭에 호버 효과 적용
 gsap.to(activeTab, {
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
 
     // 활성 탭 추적 변수 선언 및 초기 활성 탭 설정 (Y 탭으로 설정)
-    let activeTab = document.getElementById('tap-Y');
+    let activeTab = document.getElementById('tap-E');
 
     // 초기 활성 탭에 호버 효과 적용
     if (activeTab) {

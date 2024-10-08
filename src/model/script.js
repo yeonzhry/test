@@ -1,3 +1,76 @@
+'./style.css'
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/Addons.js';
+import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+
+const canvas = document.querySelector('canvas.webgl')
+
+const scene = new THREE.Scene()
+
+const gltfLoader = new GLTFLoader()
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 7.2)
+scene.add(ambientLight)
+
+const directionLight = new THREE.DirectionalLight(0xffffff, 8.3)
+scene.add(directionLight)
+
+gltfLoader.load(
+    '../model1.glb',
+    (gltf) => {
+        scene.add(gltf.scene);
+    }
+)
+
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
+window.addEventListener('resize', () => {
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+camera.position.set(2, 2, 2)
+scene.add(camera)
+
+const boxGeometry = new THREE.BoxGeometry(1, 1)
+const material = new THREE.MeshStandardMaterial()
+const box = new THREE.Mesh(boxGeometry, material)
+scene.add(box)
+
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
+const renderer = new THREE.WebGLRenderer({
+        canvas: canvas
+    })
+    // renderer.toneMapping = new THREE.ACESFilmicToneMapping
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+const clock = new THREE.Clock()
+let previouseTime = 0
+
+const tick = () => {
+    const elapsedTime = clock.getElapsedTime()
+
+    controls.update()
+
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
 // 활성 탭 추적 변수 선언 및 초기 활성 탭 설정
 let activeTab = document.getElementById('tap-O');
 

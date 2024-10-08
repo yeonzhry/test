@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "lil-gui": "^0.19.2",
+        "three": "^0.169.0",
         "tone": "^15.0.4",
         "vercel": "^37.5.3"
     }
