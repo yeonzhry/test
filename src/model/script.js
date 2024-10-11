@@ -15,9 +15,16 @@ scene.add(ambientLight)
 const directionLight = new THREE.DirectionalLight(0xffffff, 8.3)
 scene.add(directionLight)
 
+let mixer = null
+
 gltfLoader.load(
     '../model1.glb',
     (gltf) => {
+        // mixer = new THREE.AnimationMixer(gltf.scene)
+        // const action = mixer.clipAction(gltf.animations[0])
+
+        // action.play()
+        console.log(gltf.scene);
         scene.add(gltf.scene);
     }
 )
@@ -42,10 +49,10 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.set(2, 2, 2)
 scene.add(camera)
 
-const boxGeometry = new THREE.BoxGeometry(1, 1)
-const material = new THREE.MeshStandardMaterial()
-const box = new THREE.Mesh(boxGeometry, material)
-scene.add(box)
+// const boxGeometry = new THREE.BoxGeometry(1, 1)
+// const material = new THREE.MeshStandardMaterial()
+// const box = new THREE.Mesh(boxGeometry, material)
+// scene.add(box)
 
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
@@ -54,13 +61,22 @@ const renderer = new THREE.WebGLRenderer({
         canvas: canvas
     })
     // renderer.toneMapping = new THREE.ACESFilmicToneMapping
+    renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const clock = new THREE.Clock()
-let previouseTime = 0
+let previousTime = 0
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
+
+    if(mixer !== null)
+    {
+        mixer.update(deltaTime)
+    }
+
 
     controls.update()
 

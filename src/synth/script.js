@@ -65,9 +65,6 @@ function setSynth(synthType) {
         case 'MembraneSynth':
             synth = new Tone.MembraneSynth();
             break;
-        case 'NoiseSynth':
-            synth = new Tone.NoiseSynth();
-            break;
         default:
             synth = new Tone.PolySynth(Tone.Synth);
             break;
@@ -165,6 +162,66 @@ function noteDown(elem, isSharp, event) {
     synth.triggerAttackRelease(note, "16n");
     event.stopPropagation();
 }
+
+const keyMap = {
+    'a': 'C4',
+    'w': 'C#4',
+    's': 'D4',
+    'e': 'D#4',
+    'd': 'E4',
+    'f': 'F4',
+    't': 'F#4',
+    'g': 'G4',
+    'y': 'G#4',
+    'h': 'A4',
+    'u': 'A#4',
+    'j': 'B4',
+    'k': 'C5',
+    'o': 'C#5',
+    'l': 'D5',
+    'p': 'D#5',
+    ';': 'E5',
+    '\'': 'F5',
+    '1': 'F#5',
+    '2': 'G5',
+    '3': 'G#5',
+    '4': 'A5',
+    '5': 'A#5',
+    '6': 'B5'
+    // 필요에 따라 더 추가 가능
+};
+
+// 현재 눌린 키를 추적하여 반복 방지
+const pressedKeys = new Set();
+
+document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase();
+    if (keyMap[key] && !pressedKeys.has(key)) {
+        pressedKeys.add(key);
+        const note = keyMap[key];
+        synth.triggerAttackRelease(note, "16n");
+
+        // 해당 노트의 HTML 요소 활성화
+        const noteElem = document.querySelector(`[data-note='${note}']`);
+        if (noteElem) {
+            noteElem.style.background = note.includes('#') ? 'black' : '#ccc';
+        }
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    const key = event.key.toLowerCase();
+    if (keyMap[key] && pressedKeys.has(key)) {
+        pressedKeys.delete(key);
+        const note = keyMap[key];
+
+        // 해당 노트의 HTML 요소 비활성화
+        const noteElem = document.querySelector(`[data-note='${note}']`);
+        if (noteElem) {
+            noteElem.style.background = note.includes('#') ? '#777' : 'white';
+        }
+    }
+});
 
 
 // 활성 탭 추적 변수 선언 및 초기 활성 탭 설정

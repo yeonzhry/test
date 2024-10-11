@@ -78,11 +78,12 @@ body {
     transition: max-height 0.6s ease-in-out;
     flex-direction: column-reverse;
     transform-origin: bottom;
-    width: 300px;
+    align-items: center;
+    width: 270px;
 }
 
 #control-panel.expanded {
-    max-height: 400px;
+    max-height: 380px;
 }
 
 .control-header {
