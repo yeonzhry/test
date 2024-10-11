@@ -56,6 +56,7 @@
 }
 
 .control-group label {
+    bottom: 0px;
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 14px;
@@ -69,6 +70,7 @@
     border: 1px solid #ccc;
     outline: none;
     transition: border-color 0.3s;
+    bottom: 0;
 }
 
 .control-group select:focus,

@@ -15,6 +15,9 @@ scene.add(ambientLight)
 const directionLight = new THREE.DirectionalLight(0xffffff, 8.3)
 scene.add(directionLight)
 
+const spotLight = new THREE.SpotLight(0xffffff, 3.0)
+scene.add(spotLight)
+
 let mixer = null
 
 gltfLoader.load(
@@ -24,8 +27,20 @@ gltfLoader.load(
         // const action = mixer.clipAction(gltf.animations[0])
 
         // action.play()
-        console.log(gltf.scene);
-        scene.add(gltf.scene);
+        const model = gltf.scene
+
+        model.traverse((child) =>
+            {
+                if(child.isMesh)
+                {
+                    child.position.y = - 0.3
+                    child.rotation.z = - Math.PI * 0.3
+                }
+
+            }
+        )
+    console.log(model);
+    scene.add(model);
     }
 )
 
@@ -46,7 +61,7 @@ window.addEventListener('resize', () => {
 })
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2, 2, 2)
+camera.position.set(2, 0.5, 2)
 scene.add(camera)
 
 // const boxGeometry = new THREE.BoxGeometry(1, 1)
